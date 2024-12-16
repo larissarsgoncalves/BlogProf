@@ -64,13 +64,21 @@ function login() {
 }
 
 function deletePost(index) {
-    const posts = JSON.parse(localStorage.getItem('posts')) || [];
-    posts.splice(index, 1); // Remover o post do array
-    localStorage.setItem('posts', JSON.stringify(posts)); // Atualizar o localStorage
-    loadPosts(); // Recarregar os posts
+    if (currentUserLogin === pageOwner) { // Verificar se o usuário logado é o criador da página
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.splice(index, 1); // Remover o post do array
+        localStorage.setItem('posts', JSON.stringify(posts)); // Atualizar o localStorage
+        loadPosts(); // Recarregar os posts
+    } else {
+        alert('Apenas o criador da página pode deletar posts.');
+    }
 }
 
 function clearAllPosts() {
-    localStorage.removeItem('posts'); // Remover todos os posts do localStorage
-    loadPosts(); // Recarregar os posts para refletir a mudança
+    if (currentUserLogin === pageOwner) { // Verificar se o usuário logado é o criador da página
+        localStorage.removeItem('posts'); // Remover todos os posts do localStorage
+        loadPosts(); // Recarregar os posts para refletir a mudança
+    } else {
+        alert('Apenas o criador da página pode apagar todas as postagens.');
+    }
 }
