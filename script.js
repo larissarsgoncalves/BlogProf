@@ -6,6 +6,24 @@ const pageOwner = "3371815"; // Nome do criador da página
 // Carregar posts do LocalStorage quando a página carrega
 document.addEventListener("DOMContentLoaded", loadPosts);
 
+// Desabilitar clique direito
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Desabilitar teclas de atalho comuns do desenvolvedor
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'Shift')) {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+    }
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+});
+
 function loadPosts() {
     const posts = JSON.parse(localStorage.getItem('posts')) || [];
     const postsContainer = document.getElementById('posts');
