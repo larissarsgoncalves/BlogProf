@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Simples</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Meu Blog</h1>
+    
+    <!-- Formulário de Login -->
+    <div id="loginSection">
+        <input type="text" id="username" placeholder="Digite seu login">
+        <input type="text" id="nickname" placeholder="Digite seu apelido">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Seção de Posts -->
+    <div id="postsSection" style="display: none;">
+        <div id="posts"></div>
+        <textarea id="newPost" placeholder="Escreva seu post aqui..."></textarea>
+        <button onclick="addPost()">Postar</button>
+        <button onclick="clearAllPosts()">Apagar Todas as Postagens</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
